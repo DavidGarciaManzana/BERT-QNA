@@ -89,5 +89,18 @@ async function findAnswersBert() {
 }
 
 button.onclick = async function() {
-    await findAnswersBert();
+    loaderWrapper.classList.remove('none');
+    loader.classList.remove('none');
+    button.classList.add('invisible');
+
+    // Introduce a small delay (e.g., 100 milliseconds) before calling findAnswersBert
+    await new Promise(resolve => setTimeout(resolve, 100));
+
+    try {
+        await findAnswersBert();
+    } catch (e) {
+        console.log(e);
+        window.alert(e + ' try reloading the page');
+    }
 };
+
