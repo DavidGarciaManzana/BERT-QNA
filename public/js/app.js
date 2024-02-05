@@ -2,6 +2,8 @@ let whiteboard = document.getElementById('whiteboard')
 let question = document.getElementById('question')
 let button = document.getElementById('button')
 let answer = document.getElementById('answer')
+let loaderWrapper =document.getElementById('loaderWrapper')
+let loader =document.getElementById('loader')
 let model;
 
 async function loadModel(){
@@ -18,12 +20,22 @@ loadModel()
 
 button.onclick = async function() {
     button.classList.add('invisible');
+    loaderWrapper.classList.remove('none');
+    loader.classList.remove('none');
     try {
         let answers =await model.findAnswers(question.value, whiteboard.value)
-        answer.innerHTML= answers[0].text + ' (probability: ' + ((answers[0].score/25)*100).toFixed(2) + '%)'
-        console.log(answers)
+        if(answers[0]){
+            answer.innerHTML= answers[0].text + ' (probability: ' + ((answers[0].score/25)*100).toFixed(2) + '%)'
+            console.log(answers)
+        } else{
+            answer.innerHTML= 'try again'
+        }
+
         button.classList.remove('invisible');
+        loaderWrapper.classList.add('none');
+        loader.classList.add('none');
     } catch (e){
         console.log(e)
+        window.alert(e + ' try reloading the page')
     }
 };
