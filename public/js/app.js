@@ -88,6 +88,6 @@ async function findAnswersBert() {
     }
 }
 
-button.onclick = function() {
-    findAnswersBert();
+button.onclick = async function() {
+    await findAnswersBert();
 };
