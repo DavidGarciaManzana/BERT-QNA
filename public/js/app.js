@@ -20,7 +20,7 @@ button.onclick = async function() {
     button.classList.add('invisible');
     try {
         let answers =await model.findAnswers(question.value, whiteboard.value)
-        answer.innerHTML= answers[0].text + ' (probability: ' + ((answers[0].score/20)*100).toFixed(2) + '%)'
+        answer.innerHTML= answers[0].text + ' (probability: ' + ((answers[0].score/25)*100).toFixed(2) + '%)'
         console.log(answers)
         button.classList.remove('invisible');
     } catch (e){
