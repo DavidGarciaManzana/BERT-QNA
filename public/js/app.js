@@ -22,8 +22,14 @@ async function findAnswersBert(){
     if(answers[0]){
         answer.innerHTML= answers[0].text + ' (probability: ' + ((answers[0].score/25)*100).toFixed(2) + '%)'
         console.log(answers)
+        button.classList.remove('invisible');
+        loaderWrapper.classList.add('none');
+        loader.classList.add('none');
     } else{
         answer.innerHTML= 'try again'
+        button.classList.remove('invisible');
+        loaderWrapper.classList.add('none');
+        loader.classList.add('none');
     }
 }
 
@@ -34,14 +40,8 @@ button.onclick = function() {
 
     try {
         findAnswersBert();
-        button.classList.remove('invisible');
-        loaderWrapper.classList.add('none');
-        loader.classList.add('none');
     } catch (e){
         console.log(e)
         window.alert(e + ' try reloading the page')
-        button.classList.remove('invisible');
-        loaderWrapper.classList.add('none');
-        loader.classList.add('none');
     }
 };
