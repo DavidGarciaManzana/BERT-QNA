@@ -7,9 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="css/styles.css">
+
 </head>
 <body>
-<h1>Hello world</h1>
+<p class="text">Wait for the model to charge, then simply add some information in the first textarea, followed by a question in the second one, and then click 'run'. AI will effortlessly scouring the original text for the perfect answer.</p>
+<textarea id="whiteboard" class="whiteboard">David is a software engineer from Mexico. He has worked as a frontend developer, backend developer, and integrating AI into business solutions. He is proficient in JavaScript, TypeScript, React, Next.js, Node.js, and Express. He began his career in March 2021. Originally studying petroleum engineering, he was introduced to programming, which led him to switch careers and become a software engineer. He has a C1 level of English and possesses good soft skills such as communication, teamwork, and creativity to solve problems. He is passionate about AI and is dedicated to learning more every day.</textarea>
+<textarea id="question" class="question">What is david passionate about?</textarea>
+<button id="button" class="button invisible">Run</button>
+<p id="answer" class="answer invisible"></p>
+
+
+<!-- Load TensorFlow.js. This is required to use the qna model. -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+<!-- Load the qna model. -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/qna"> </script>
+
 
 <script src="js/app.js"></script>
 </body>
